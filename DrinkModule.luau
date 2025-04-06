@@ -29,7 +29,7 @@
 
 --[[
 aliases:table = List of drink names -- | REQUIRED
- - {"name1","name2"}
+	- {"name1","name2"}
 
 color:Color3 = Color of the liquid -- RGB, 0-255 | REQUIRED
 transparency:number = Transparency of the liquid -- 0 is solid, 1 is invisible/nothing | REQUIRED
@@ -40,10 +40,10 @@ dispensesound:string = The sound clip played upon dispensing -- dispense0 used f
 
 message:string = Message displayed upon drinking -- Each message lasts for 9 seconds. Messages should ONLY ever show while alive. %s will use the user's display name. FOR RARE CASES ONLY. MESSAGES WILL ALWAYS BE IN 1ST PERSON.
 additionalmessages:table = Table of additional messages
- - {
- {time:number = Wait Time, message:string = Message}, -- Each message lasts for 9 seconds, meaning you should, at minimum, space out additional messages by 9 seconds
- {time:number = Wait Time, message:string = Message}
- }
+	- {
+	{time:number = Wait Time, message:string = Message}, -- Each message lasts for 9 seconds, meaning you should, at minimum, space out additional messages by 9 seconds
+	{time:number = Wait Time, message:string = Message}
+	}
 
 blur:number = The amount of blurring the drink causes, changes the blur effect in lighting*3 -- If death is imminent, time the blur by the death time + 3, as it takes 3 seconds to respawn
 damage:number = Damage taken upon drinking*10
