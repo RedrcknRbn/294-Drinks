@@ -1,6 +1,7 @@
 --[[
 This module is used to create drinks in the game. The game is about SCP-294, a vending machine that can create any drink.
 SCP-294 prefers to dispense literal material, instead of figurative material. Dispensing flames will LITERALLY dispense a drink made of flames. Dispensing rain will dispense literal rain water.
+SCP-294 will often melt metals in order to turn them into a liquid form.
 SCP-294 also seems to have an attitude, as requesting "Surprise me" will dispense a drink that burns you.
 SCP-294, as a result of dispensing literal elements/materials, can dispense skills, and the drinker will gain that skill temporarily. This also works with memories.
 SCP-294 will attempt to grab nearby objects to turn into a drink, meaning if you put "me", it will grab your blood and dispense that, often resulting in fatality.
@@ -51,8 +52,8 @@ dispensesound:string = The sound clip played upon dispensing -- dispense0 used f
 message:string = Message displayed upon drinking -- Each message lasts for 9 seconds. Messages should ONLY ever show while alive. %s will use the user's display name. FOR RARE CASES ONLY. MESSAGES WILL ALWAYS BE IN 1ST PERSON.
 additionalmessages:table = Table of additional messages
 	- {
-	{time:number = Wait Time, message:string = Message}, -- Each message lasts for 9 seconds, meaning you should, at minimum, space out additional messages by 9 seconds
-	{time:number = Wait Time, message:string = Message}
+		{time:number = Wait Time, message:string = Message}, -- Each message lasts for 9 seconds, meaning you should, at minimum, space out additional messages by 9 seconds
+		{time:number = Wait Time, message:string = Message}
 	}
 
 blur:number = The amount of blurring the drink causes, changes the blur effect in lighting*3 -- If death is imminent, time the blur by the death time + 3, as it takes 3 seconds to respawn
