@@ -21,7 +21,7 @@ You don't need to describe drinks unless they have a unique taste. Not every dri
 		color=Color3.fromRGB(255,255,255),
 		transparency=0.5,
 		dispensesound="dispense3",
-		drinksound=cough,
+		drinksound="cough",
 		glow=true,
 		message="Ah damn",
 		additionalmessages={
@@ -29,10 +29,11 @@ You don't need to describe drinks unless they have a unique taste. Not every dri
 			{time=18,message="It gets worse and worse!"}
 		},
 		blur=21,
-		damage=50,
+		damage=5,
 		bloodloss=25,
 		deathtimer=18,
 		walkspeed=1,
+		gravity=10,
 		explode=true,
 		lethal=true,
 		kick=true},
@@ -43,14 +44,14 @@ aliases:table = List of drink names -- Keep it all in lowercase! | REQUIRED
 	- {"name1","name2"}
 
 color:Color3 = Color of the liquid -- RGB, 0-255 | REQUIRED
-transparency:number = Transparency of the liquid -- 0 is solid, 1 is invisible/nothing | REQUIRED
+transparency:number = Transparency of the liquid -- 0 is solid, 1 is invisible/nothing, put 1 if nothing is dispensed | REQUIRED
 glow:bool = Whether the liquid uses neon
 
-drinksound:string = The sound clip played upon drinking -- ahh, breath, burn, corpse, decay, ending, ew1, ew2, inproximity, nuke2, retch1, retch2, slurp, spit, venom
-dispensesound:string = The sound clip played upon dispensing -- dispense0 used for nothing, dispense1 used for regular drinks, dispense2 used for slightly irregular drinks, dispense3 used for anomalyous drinks | REQUIRED
+drinksound:string = The sound clip played upon drinking -- Drink sound is always required if the drink is drank. Don't put anything if the character doesn't drink it | The sounds that can be used are (Note, messages in : ahh, breath, burn, corpse, decay, ending, ew1, ew2, inproximity (whispering noises), nuke2, retch1, retch2, slurp, spit, venom, yeah (used for object show related stuff)
+dispensesound:string = The sound clip played upon dispensing -- dispense0 used for dispensing nothing/air (aka, if a drink isnt dispensed), dispense1 used for regular drinks, dispense2 used for slightly irregular drinks, dispense3 used for anomalyous drinks | REQUIRED
 
 message:string = Message displayed upon drinking -- Each message lasts for 9 seconds. Messages should ONLY ever show while alive. %s will use the user's display name. FOR RARE CASES ONLY. MESSAGES WILL ALWAYS BE IN 1ST PERSON.
-additionalmessages:table = Table of additional messages
+additionalmessages:table = Table of additional messages -- Always generate this AFTER message:string, otherwise errors will occur!
 	- {
 		{time:number = Wait Time, message:string = Message}, -- Each message lasts for 9 seconds, meaning you should, at minimum, space out additional messages by 9 seconds
 		{time:number = Wait Time, message:string = Message}
@@ -61,7 +62,8 @@ damage:number = Damage taken upon drinking*10
 bloodloss:number = Increases blood loss upon drinking (damage over time) -- Goes down each second using the equation BloodLoss = BloodLoss/15. Does the current amount of BloodLoss as damage
 deathtimer:number = Time till death after drinking
 
-walkspeed:number = Changes WalkSpeed
+walkspeed:number = Changes WalkSpeed, walkspeed by default is 6
+gravity:number = Changes Gravity, default is 35 -- 0 is no gravity, negative gravity is not possible.
 
 explode:bool = Explodes the drink, should never be used with messages
 lethal:bool = Kills user immediately after drinking, should never be used with messages
@@ -90,7 +92,7 @@ local Drinks = {
 		drinksound="ahh",
 		damage=-2},
 
-	{aliases = {"amensia","forget","amnesiac","amnestics"},
+	{aliases = {"amensia","forget","amnesiac","amnestics","schizo","schizophrenia","alzheimers","alzeimers"},
 		color=Color3.fromRGB(255, 255, 255),
 		transparency=0.5,
 		dispensesound="dispense2",
@@ -129,7 +131,7 @@ local Drinks = {
 		dispensesound="dispense2",
 		message="Hmm... There should be more cuprite."},
 
-	{aliases = {"atomic","nuclear","fusion","fission","reaction","nuclear fusion","nuclear fission","nuclear reaction","bomb","explosion","nuclear bomb","nuclear explosion","hiroshima","nagasaki","1945","kaboom","boom","green","explode","nyaboom","nuke","gunpowder","tnt","911","9-11","9 11","twin towers","twin towers","september 11","september 11 2001","2001","radioactive","radioactive material","radioactive object","radioactive objects"},
+	{aliases = {"atomic","nuclear","fusion","fission","reaction","nuclear fusion","nuclear fission","nuclear reaction","bomb","explosion","nuclear bomb","nuclear explosion","hiroshima","nagasaki","1945","kaboom","boom","green","explode","nyaboom","nuke","gunpowder","tnt","911","9-11","9 11","twin towers","twin towers","september 11","september 11 2001","2001","radioactive","radioactive material","radioactive object","radioactive objects","gun","plutonium","hydrogen","uranium","tsar bomb","tsar bomba","tsar-bomb","tsar-bomba"},
 		color=Color3.fromRGB(85, 255, 0),
 		transparency=0,
 		dispensesound="dispense3",
@@ -250,7 +252,7 @@ local Drinks = {
 		drinksound="ahh",
 		blur=2},
 
-	{aliases = {"coffee","black coffee"},
+	{aliases = {"coffee","black coffee","cafe","cofe","coffe","cofee","cappuccino"},
 		color=Color3.fromRGB(87,62,45),
 		transparency=0.1,
 		dispensesound="dispense1",
@@ -263,9 +265,9 @@ local Drinks = {
 		transparency=0.5,
 		dispensesound="dispense1",
 		drinksound="ahh",
-		message="You enjoy the refreshing flavor of coconut milk.*"},
+		message="You enjoy the refreshing flavor of coconut milk."},
 
-	{aliases = {"cola","coke","coca cola","coca-cola","pepsi","pop","pepsi-cola","pepsi cola","soda","coke soda"},
+	{aliases = {"cola","coke","coca cola","coca-cola","pepsi","pop","pepsi-cola","pepsi cola","soda","coke soda","coca","cocacola","cola","coco cola"},
 		color=Color3.fromRGB(58,29,20),
 		transparency=0.2,
 		dispensesound="dispense1",
@@ -301,7 +303,7 @@ local Drinks = {
 		drinksound="slurp",
 		message="Full of exotic spices and flavours, wet consistency, delicious."},
 
-	{aliases = {"death","reset","game over","die","l","skill issue","suicide","soup on side","skibidi","asus","shadow","lpi","lets party","rizz","ohio","rizzler","brainrot","sigma","poisonous beast","bfdi","object shows","sprunki","mmos","hfjone","videoconsole","object show"},
+	{aliases = {"death","reset","game over","die","l","skill issue","suicide","soup on side","skibidi","asus","shadow","lpi","lets party","rizz","ohio","rizzler","brainrot","sigma","poisonous beast","bfdi","object shows","sprunki","mmos","hfjone","videoconsole","object show","flint and steel","chicken jockey","the nether"},
 		color=Color3.fromRGB(0,0,0),
 		transparency=0,
 		dispensesound="dispense3",
@@ -330,7 +332,7 @@ local Drinks = {
 		drinksound="burn",
 		lethal=true},
 
-	{aliases = {"es","euroshopper","monster","monster energy","monster energy drink","euroshopper energy","rb","euroshopper energy drink","energy","energy drink","redbull","redbull energy","redbull energy drink","nrg","5 hour energy","5 hour"},
+	{aliases = {"es","euroshopper","monster","monster energy","monster energy drink","euroshopper energy","rb","euroshopper energy drink","energy","energy drink","redbull","redbull energy","redbull energy drink","nrg","5 hour energy","5 hour","red bull"},
 		color=Color3.fromRGB(254,194,16),
 		transparency=0.5,
 		dispensesound="dispense1",
@@ -365,7 +367,7 @@ local Drinks = {
 		message="I graciously accept thy position, my Emperor.",
 		walkspeed=8},
 
-	{aliases = {"exotic matter","zero point","zero point energy","negative matter","gravitons","graviton","higgs boson","god particles","black hole"},
+	{aliases = {"exotic matter","zero point","zero point energy","negative matter","gravitons","graviton","higgs boson","god particles","black hole","reality","light"},
 		color=Color3.fromRGB(255,255,255),
 		transparency=0.5,
 		dispensesound="horror16",
@@ -387,7 +389,7 @@ local Drinks = {
 		drinksound="inproximity",
 		blur=3},
 
-	{aliases = {"feces","fecal matter","shit","crap","poo","poop","dung","scat","turd","bullshit","horseshit","diarrhea","taco bell","overwatch","league of legends","league","valorant"},
+	{aliases = {"feces","fecal matter","shit","crap","poo","poop","dung","scat","turd","bullshit","horseshit","diarrhea","taco bell","overwatch","league of legends","league","valorant","trash","trash can","garbage","garbage can","trash bag","garbage bag"},
 		color=Color3.fromRGB(120,60,0),
 		transparency=0,
 		dispensesound="dispense2",
@@ -399,7 +401,7 @@ local Drinks = {
 		dispensesound="dispense2",
 		message="Yeah, I'm not drinking that."},
 
-	{aliases = {"feces and blood","blood and feces","blood and poop","poop and blood","bloody diarrhea"},
+	{aliases = {"feces and blood","blood and feces","blood and poop","poop and blood","bloody diarrhea","scp 173","scp-173","173"},
 		color=Color3.fromRGB(220,80,30),
 		transparency=0,
 		dispensesound="dispense2",
@@ -555,7 +557,7 @@ local Drinks = {
 		drinksound="breath",
 		message="Shh, no tears, only dreams now. There is no need to be upset."},
 
-	{aliases = {"joe","joseph","cat","dog","animal","intestines","lungs","meat","penis","cock","human","male","female","guy","gal","man","woman"},
+	{aliases = {"joe","joseph","cat","dog","animal","intestines","lungs","meat","penis","cock","human","male","female","guy","gal","man","woman","person","jimmy","joe","cup of joe","a cup of joe","jerome"},
 		color=Color3.fromRGB(145,32,50),
 		transparency=0.1,
 		dispensesound="dispense3",
@@ -573,9 +575,19 @@ local Drinks = {
 		bloodloss=-2,
 		message="You feel as though someone is expecting you.",
 		additionalmessages={
-			{time=20,message="Is that you?"}
+			{time=20,message="Is that you? %s?"}
 		},
 		walkspeed=7},
+	
+	{aliases = {"666","scp666","scp 666","scp-666"},
+		color=Color3.fromRGB(255, 0, 0),
+		transparency=0,
+		glow=true,
+		dispensesound="horror16",
+		drinksound="corpse",
+		blur=20,
+		damage=90,
+		bloodloss=10},
 
 	{aliases = {"knowledge","intellect","thoughts"},
 		color=Color3.fromRGB(255,255,255),
@@ -682,7 +694,7 @@ local Drinks = {
 		drinksound="slurp",
 		message="He'll never forgive you."},
 
-	{aliases = {"milk"},
+	{aliases = {"milk","soy","the soy","soy milk"},
 		color=Color3.fromRGB(255,255,255),
 		transparency=0,
 		dispensesound="dispense1",
@@ -838,7 +850,7 @@ local Drinks = {
 		bloodloss=50,
 		walkspeed=9},
 
-	{aliases = {"room-temperature semiconducter","semiconducter"},
+	{aliases = {"room-temperature semiconducter","semiconducter","apple","apple juice","juice"},
 		color=Color3.fromRGB(254,219,93),
 		transparency=0.5,
 		dispensesound="dispense3",
@@ -854,7 +866,7 @@ local Drinks = {
 		message="The warm liquid has a salty after-taste, almost like tears.",
 		walkspeed=5},
 
-	{aliases = {"294","scp 294","scp-294"},
+	{aliases = {"294","scp 294","scp-294","vending machine","vending","914","scp 914","scp-914"},
 		color=Color3.fromRGB(255,255,255),
 		transparency=1,
 		dispensesound="dispense3",
@@ -887,7 +899,7 @@ local Drinks = {
 		dispensesound="dispense3",
 		explode=true},
 
-	{aliases = {"spinal fluid","brain juice","brain liquid","brain fluid","brain","brains","spine","neurons","prions"},
+	{aliases = {"spinal fluid","brain juice","brain liquid","brain fluid","brain","brains","spine","neurons","prions","grey","grey matter","white matter","black matter","gray","gray matter"},
 		color=Color3.fromRGB(255,255,255),
 		transparency=0.9,
 		dispensesound="dispense3",
@@ -988,7 +1000,7 @@ local Drinks = {
 		drinksound="slurp",
 		message="Could've used some lime and salt."},
 
-	{aliases = {"the best drink","best drink","best","the perfect drink","perfect drink","perfect","perfection"},
+	{aliases = {"the best drink","best drink","best","the perfect drink","perfect drink","perfect","perfection","best drink ever made"},
 		color=Color3.fromRGB(179,120,211),
 		transparency=0.2,
 		dispensesound="dispense3",
@@ -1100,7 +1112,7 @@ local Drinks = {
 		drinksound="ahh",
 		message="The drink tastes sweet and fizzy, with a hint of vanilla."},
 
-	{aliases = {"blueberry juice","blueberry","berry juice"},
+	{aliases = {"blueberry juice","blueberry","berry juice","blue"},
 		color=Color3.fromRGB(72,61,139),
 		transparency=0.4,
 		dispensesound="dispense1",
@@ -1181,14 +1193,14 @@ local Drinks = {
 		walkspeed=12,
 		blur=5},
 
-	{aliases = {"mango smoothie","mango drink","mango juice"},
+	{aliases = {"mango smoothie","mango drink","mango juice","mango"},
 		color=Color3.fromRGB(255,204,102),
 		transparency=0.3,
 		dispensesound="dispense1",
 		drinksound="slurp",
 		message="The drink is thick and sweet, with a strong mango flavor."},
 
-	{aliases = {"cucumber water","detox water","infused water"},
+	{aliases = {"cucumber water","detox water","infused water","cucumber"},
 		color=Color3.fromRGB(200,255,200),
 		transparency=0.8,
 		dispensesound="dispense1",
@@ -1318,7 +1330,7 @@ local Drinks = {
 		drinksound="slurp",
 		message="The drink is warm and comforting, with a hint of cinnamon."},
 
-	{aliases = {"grape soda","grape pop","purple soda"},
+	{aliases = {"grape soda","grape pop","purple soda","grape juice"},
 		color=Color3.fromRGB(128,0,128),
 		transparency=0.4,
 		dispensesound="dispense1",
@@ -1360,7 +1372,7 @@ local Drinks = {
 		drinksound="slurp",
 		message="The drink is creamy and sweet, with a rich butterscotch flavor."},
 
-	{aliases = {"kiwi juice","kiwi drink","green fruit juice"},
+	{aliases = {"kiwi juice","kiwi drink","green fruit juice","slime"},
 		color=Color3.fromRGB(144,238,144),
 		transparency=0.3,
 		dispensesound="dispense1",
@@ -1450,172 +1462,68 @@ local Drinks = {
 		dispensesound="dispense1",
 		drinksound="slurp",
 		message="The drink is refreshing and tangy, with a hint of matcha."},
-
-	{aliases = {"void","nothingness","the void"},
-		color=Color3.fromRGB(0,0,0),
-		transparency=1,
-		dispensesound="dispense0",
-		message="You feel empty inside."},
-
-	{aliases = {"liquid luck","felix felicis","luck"},
-		color=Color3.fromRGB(255,255,0),
-		transparency=0.3,
-		glow=true,
-		dispensesound="dispense3",
-		message="You feel incredibly lucky!",
-		walkspeed=10},
-
-	{aliases = {"unicorn tears","tears of a unicorn","unicorn"},
-		color=Color3.fromRGB(255,255,255),
-		transparency=0.2,
-		glow=true,
-		dispensesound="dispense3",
-		message="You feel pure and innocent.",
-		bloodloss=-20},
-
-	{aliases = {"dragon breath","breath of a dragon","dragon"},
-		color=Color3.fromRGB(255,0,0),
-		transparency=0.2,
-		glow=true,
-		dispensesound="dispense3",
-		drinksound="burn",
-		message="Your throat burns with the heat of a dragon's breath.",
-		damage=30},
-
-	{aliases = {"phoenix tears","tears of a phoenix","phoenix"},
-		color=Color3.fromRGB(255,165,0),
-		transparency=0.2,
-		glow=true,
-		dispensesound="dispense3",
-		message="You feel reborn and revitalized.",
-		bloodloss=-50,
-		damage=-10},
-
-	{aliases = {"goblin sweat","sweat of a goblin","goblin"},
-		color=Color3.fromRGB(0,255,0),
+	
+	{aliases = {"slurp juice","chug jug","chugjug","that blue drink from fortnite"},
+		color=Color3.fromRGB( 27,201,222),
 		transparency=0.5,
-		dispensesound="dispense2",
-		message="The drink tastes foul and earthy.",
-		walkspeed=2},
-
-	{aliases = {"elf wine","wine of the elves","elf"},
-		color=Color3.fromRGB(255,255,255),
-		transparency=0.1,
-		glow=true,
 		dispensesound="dispense3",
-		message="You feel graceful and wise.",
-		walkspeed=9},
-
-	{aliases = {"dwarf ale","ale of the dwarves","dwarf"},
-		color=Color3.fromRGB(139,69,19),
-		transparency=0.3,
-		dispensesound="dispense1",
-		message="You feel strong and sturdy.",
-		walkspeed=7},
-
-	{aliases = {"giant blood","blood of a giant","giant"},
-		color=Color3.fromRGB(255,0,0),
-		transparency=0.1,
-		dispensesound="dispense2",
-		message="You feel large and powerful.",
-		walkspeed=11},
-
-	{aliases = {"fairy dust","dust of a fairy","fairy"},
-		color=Color3.fromRGB(255,182,193),
-		transparency=0.5,
-		glow=true,
-		dispensesound="dispense3",
-		message="You feel light and whimsical.",
-		walkspeed=10},
-
-	{aliases = {"molten gold","liquid gold","golden drink"},
-		color=Color3.fromRGB(255,215,0),
-		transparency=0.2,
-		glow=true,
-		dispensesound="dispense3",
-		drinksound="burn",
-		lethal=true},
-
-	{aliases = {"moonlight","lunar essence","moon water"},
-		color=Color3.fromRGB(230,230,250),
-		transparency=0.7,
-		glow=true, 
-		dispensesound="dispense3",
-		drinksound="slurp",
-		message="The drink fills you with a mysterious lunar energy.",
-		walkspeed=8},
-
-	{aliases = {"rainbow sherbet","sherbet","rainbow ice"},
-		color=Color3.fromRGB(255,105,180),
-		transparency=0.3,
-		dispensesound="dispense1",
-		drinksound="slurp",
-		message="The drink tastes like frozen rainbow sherbet."},
-
-	{aliases = {"starfruit juice","star fruit","celestial juice"},
-		color=Color3.fromRGB(255,255,102),
-		transparency=0.4,
-		glow=true,
-		dispensesound="dispense2",
 		drinksound="ahh",
-		message="The juice tastes sweet and tropical with a hint of stardust."},
-
-	{aliases = {"liquid nitrogen","cryo drink","freezing drink"},
-		color=Color3.fromRGB(200,255,255),
-		transparency=0.8,
-		dispensesound="dispense3",
-		drinksound="burn",
-		lethal=true},
-
-	{aliases = {"thunder","lightning","storm essence"},
-		color=Color3.fromRGB(255,255,102),
-		transparency=0.6,
 		glow=true,
-		dispensesound="dispense3",
-		drinksound="burn",
-		message="Electricity courses through your body!",
-		damage=40,
-		blur=15},
-
-	{aliases = {"liquid crystal","crystal drink","gemstone"},
-		color=Color3.fromRGB(170,220,255),
+		damage=-5,
+		message="Fortnite battle pass"},
+	
+	{aliases = {"yoylecake","yoyleberry","yoylestew"},
+		color=Color3.fromRGB(160,4,252),
 		transparency=0.5,
-		glow=true,
 		dispensesound="dispense2",
-		drinksound="slurp",
-		message="Your insides begin to crystallize.",
-		deathtimer=10,
-		blur=13},
-
-	{aliases = {"morning dew","fresh dew","dawn drops"},
-		color=Color3.fromRGB(220,255,220),
-		transparency=0.8,
-		dispensesound="dispense1",
-		drinksound="slurp",
-		message="The drink tastes pure and refreshing.",
-		damage=-5},
-
-	{aliases = {"liquid mirror","mirror drink","reflection"},
-		color=Color3.fromRGB(192,192,192),
-		transparency=0.2,
+		drinksound="yeah",
 		glow=true,
-		dispensesound="dispense3",
-		drinksound="spit",
-		message="You see your reflection distort as you drink.",
-		blur=20,
-		bloodloss=15},
+		walkspeed=3,
+		message="This drink is a bit...   metalish?"},
 
-	{aliases = {"meteor shower","falling stars","star shower"},
-		color=Color3.fromRGB(255,140,0),
-		transparency=0.4,
-		glow=true,
-		dispensesound="dispense3",
-		drinksound="burn",
-		message="You feel cosmic energy burning through you.",
-		damage=25,
+	{aliases = {"needles cake","photo cake","dream berry","himsheys"},
+		color=Color3.fromRGB(27,201,222),
+		transparency=0.5,
+		dispensesound="dispense2",
+		drinksound="yeah",
+	},
+	
+	{aliases = {"420","weed","dope","green dragon","marijuana","mj","marihuana","snoop","snoop dog","snoop dogg"},
+		color=Color3.fromRGB(54,177,30),
+		transparency=0,
+		dispensesound="dispense2",
 		blur=10,
-		walkspeed=12},
-
+		walkspeed=4,
+		message="MAN DATS SOM GOOD STUFF",
+		drinksound="yeah",
+	},
+	
+	{aliases = {"anti-gravity","anti gravity","antigravity","feather","feathers","fly","flight","wings","wing"},
+		color=Color3.fromRGB(255,255,255),
+		transparency=0,
+		glow=true,
+		gravity=0,
+		dispensesound="dispense3",
+		drinksound="ahh",
+		message="You feel light on your feet, and you feel as though you weigh nothing."},
+	
+	{aliases = {"1079","scp-1079","scp1079","scp 1079","bubblebath","bubblebath bonbons","bubble bath","bubblebath bon bons"},
+		color=Color3.fromRGB(255, 170, 255),
+		transparency=0,
+		gravity=5,
+		dispensesound="dispense3",
+		drinksound="slurp",
+		message="You feel tingling all over your body.",
+		additionalmessages={
+			{time=10,message="You feel a bubblegum-like foam on your arms and back."},
+			{time=20,message="The volume of foam increases."},
+			{time=30,message="You feel as though your blood is being sucked dry."},
+			{time=40,message="Your vision goes dark."}
+		},
+		blur=50,
+		bloodloss=20,
+		deathtimer=47},
+	
 	{aliases = {"template","temp","test","testing","temporary"},
 		color=Color3.fromRGB(255,255,255),
 		transparency=0.5,
