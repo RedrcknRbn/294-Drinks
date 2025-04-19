@@ -39,10 +39,13 @@ Current properties, Bolded are **Required**:
 ---
 ## Aliases
 `aliases:table`
+
 **Required**
+
 List of drink names | Keep in Lowercase
 ### Alias
 `string`
+
 Name for drink
 ```lua
 {aliases = {"template","temp"}
@@ -51,7 +54,9 @@ Name for drink
 ---
 ## Color
 `color:Color3`
+
 **Required**
+
 Color of the liquid | RGB, 0-255
 ```lua
 color=Color3.fromRGB(255,255,255)
@@ -60,7 +65,9 @@ color=Color3.fromRGB(255,255,255)
 ---
 ## Transparency
 `transparency:number`
+
 **Required**
+
 Transparency of the liquid | 0 is solid, 1 is invisible/nothing, put 1 if nothing is dispensed
 ```lua
 transparency=0.5
@@ -69,6 +76,7 @@ transparency=0.5
 ---
 ## Glow
 `glow:bool`
+
 Whether the liquid uses neon
 ```lua
 glow=true
@@ -77,6 +85,7 @@ glow=true
 ---
 ## Drink Sound
 `drinksound:string`
+
 The sound clip played upon drinking | Drink sound is always required if the drink is drank. Don't put anything if the character doesn't drink it
 - ahh
 - breath
@@ -101,7 +110,9 @@ drinksound="cough"
 ---
 ## Dispense Sound
 `dispensesound:string`
+
 **Required**
+
 The sound clip played upon dispensing
 - dispense0 (Used for dispensing nothing/air)
 - dispense1 (Regular drinks)
@@ -116,6 +127,7 @@ dispensesound="dispense3"
 ---
 ## Message
 `message:string`
+
 Message displayed upon drinking | Each message lasts for 9 seconds | %s will use the user's display name
 ```lua
 message="Ah damn"
@@ -124,12 +136,15 @@ message="Ah damn"
 ---
 ## Additional Messages
 `additionalmessages:table`
-Table of additional messages | Always use this AFTER [[#Message]], otherwise errors will occur!
+
+Table of additional messages | Always use this AFTER [Message](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#message), otherwise errors will occur!
 ### Time
 `time:number`
+
 Time to wait before displaying message
 ###  Message
 `message:string`
+
 Message to display
 ```lua
 additionalmessages={
@@ -141,6 +156,7 @@ additionalmessages={
 ---
 ## Blur
 `blur:number`
+
 The amount of blurring the drink causes, changes the blur effect in lighting\*3 | If death is imminent, time the blur by the death time + 3, as it takes 3 seconds to respawn
 ```lua
 blur=21
@@ -149,6 +165,7 @@ blur=21
 ---
 ## Damage
 `damage:number`
+
 Damage taken upon drinking\*10
 ```lua
 damage=5
@@ -157,6 +174,7 @@ damage=5
 ---
 ## Blood Loss
 `bloodloss:number`
+
 Increases blood loss upon drinking (damage over time) | Goes down each second using the equation BloodLoss = BloodLoss/15 | Does the current amount of BloodLoss as damage
 ```lua
 bloodloss=25
@@ -165,6 +183,7 @@ bloodloss=25
 ---
 ## Walk Speed
 `walkspeed:number`
+
 Changes WalkSpeed | WalkSpeed by default is 6
 ```lua
 walkspeed=1
@@ -173,6 +192,7 @@ walkspeed=1
 ---
 ## Gravity
 `gravity:number`
+
 Changes Gravity | Gravity by default is 35 | 0 is no gravity | Negative gravity is not possible.
 ```lua
 gravity=10
@@ -181,6 +201,7 @@ gravity=10
 ---
 ## Explode
 `explode:bool`
+
 Explodes the drink | Should never be used with messages
 ```lua
 explode=true
@@ -189,6 +210,7 @@ explode=true
 ---
 ## Lethal
 `lethal:bool`
+
 Kills the user immediately after drinking | Should never be used with messages
 ```lua
 lethal=true
@@ -197,6 +219,7 @@ lethal=true
 ---
 ## Death Timer
 `deathtimer:number`
+
 Time till death after drinking
 ```lua
 deathtimer=18
@@ -205,6 +228,7 @@ deathtimer=18
 ---
 ## Kick
 `kick:bool`
+
 Kicks the player after drinking | Should never be used with messages
 ```lua
 kick=true
@@ -215,11 +239,16 @@ kick=true
 This is the guide we follow when creating drinks. It includes info on how drinks should be made, and what the Vending Machine would dispense
 
 SCP-294 prefers to dispense literal material, instead of figurative material. Dispensing flames will LITERALLY dispense a drink made of flames. Dispensing rain will dispense literal rain water.
+
 SCP-294 will often melt metals in order to turn them into a liquid form.
 SCP-294 also seems to have an attitude, as requesting "Surprise me" will dispense a drink that burns you.
+
 SCP-294, as a result of dispensing literal elements/materials, can dispense skills, and the drinker will gain that skill temporarily. This also works with memories.
+
 SCP-294 will attempt to grab nearby objects to turn into a drink, meaning if you put "me", it will grab your blood and dispense that, often resulting in fatality.
+
 Do not be afraid to kill the user! Death and damage is a common element of this game, and happens frequently.
+
 You don't need to describe drinks unless they have a unique taste. Not every drink will have a message.
 
 ```lua
