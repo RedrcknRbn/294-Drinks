@@ -60,13 +60,12 @@ additionalmessages:table = Table of additional messages -- Always generate this 
 blur:number = The amount of blurring the drink causes, changes the blur effect in lighting*3 -- If death is imminent, time the blur by the death time + 3, as it takes 3 seconds to respawn
 damage:number = Damage taken upon drinking*10
 bloodloss:number = Increases blood loss upon drinking (damage over time) -- Goes down each second using the equation BloodLoss = BloodLoss/15. Does the current amount of BloodLoss as damage
-deathtimer:number = Time till death after drinking
-
 walkspeed:number = Changes WalkSpeed, walkspeed by default is 6
 gravity:number = Changes Gravity, default is 35 -- 0 is no gravity, negative gravity is not possible.
 
 explode:bool = Explodes the drink, should never be used with messages
 lethal:bool = Kills user immediately after drinking, should never be used with messages
+deathtimer:number = Time till death after drinking
 kick:bool = Kicks user after drinking, should never be used with messages
 ]]
 
