@@ -7,33 +7,33 @@ This repository contains the documentation and drinks for [Vending Machine 294](
 
 Current properties, Bolded are **Required**:
 
-- **[[#Aliases]]**
+- ***[Aliases](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#aliases)***
 
 *Decoration*
- - **[[#Color]]**
- - **[[#Transparency]]**
- - [[#Glow]]
+ - ***[Color](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#color)***
+ - ***[Transparency](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#transparency)***
+ - [Glow](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#glow)
 
 *Sounds*
- - [[#Drink Sound]]
- - **[[#Dispense Sound]]**
+ - [Drink Sound](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#drink-sound)
+ - ***[Dispense Sound](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#dispense-sound)***
 
 *Messages*
- - [[#Message]]
- - [[#Additional Messages]]
+ - [Message](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#message)
+ - [Additional Messages](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#additional-messages)
 
 *Effects*
- - [[#Blur]]
- - [[#Damage]]
- - [[#Blood Loss]]
- - [[#Walk Speed]]
- - [[#Gravity]]
+ - [Blur](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#blur)
+ - [Damage](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#damage)
+ - [Blood Loss](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#blood-loss)
+ - [Walk Speed](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#walk-speed)
+ - [Gravity](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#gravity)
 
 *Lethal Effects*
- - [[#Explode]]
- - [[#Lethal]]
- - [[#Death Timer]]
- - [[#Kick]]
+ - [Explode](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#explode)
+ - [Lethal](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#lethal)
+ - [Death Timer](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#death-timer)
+ - [Kick](https://github.com/RedrcknRbn/294-Drinks?tab=readme-ov-file#kick)
 
 ---
 ## Aliases
