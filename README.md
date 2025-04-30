@@ -101,7 +101,7 @@ The sound clip played upon drinking | Drink sound is always required if the drin
 - retch2
 - slurp
 - spit
-- venom
+- vomit
 - yeah
 ```lua
 drinksound="cough"

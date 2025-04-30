@@ -47,7 +47,7 @@ color:Color3 = Color of the liquid -- RGB, 0-255 | REQUIRED
 transparency:number = Transparency of the liquid -- 0 is solid, 1 is invisible/nothing, put 1 if nothing is dispensed | REQUIRED
 glow:bool = Whether the liquid uses neon
 
-drinksound:string = The sound clip played upon drinking -- Drink sound is always required if the drink is drank. Don't put anything if the character doesn't drink it | The sounds that can be used are (Note, messages in : ahh, breath, burn, corpse, decay, ending, ew1, ew2, inproximity (whispering noises), nuke2, retch1, retch2, slurp, spit, venom, yeah (used for object show related stuff)
+drinksound:string = The sound clip played upon drinking -- Drink sound is always required if the drink is drank. Don't put anything if the character doesn't drink it | The sounds that can be used are (Note, messages in : ahh, breath, burn, corpse, decay, ending, ew1, ew2, inproximity (whispering noises), nuke2, retch1, retch2, slurp, spit, vomit, yeah (used for object show related stuff)
 dispensesound:string = The sound clip played upon dispensing -- dispense0 used for dispensing nothing/air (aka, if a drink isnt dispensed), dispense1 used for regular drinks, dispense2 used for slightly irregular drinks, dispense3 used for anomalyous drinks | REQUIRED
 
 message:string = Message displayed upon drinking -- Each message lasts for 9 seconds. Messages should ONLY ever show while alive. %s will use the user's display name. FOR RARE CASES ONLY. MESSAGES WILL ALWAYS BE IN 1ST PERSON.
@@ -556,7 +556,7 @@ local Drinks = {
 		drinksound="breath",
 		message="Shh, no tears, only dreams now. There is no need to be upset."},
 
-	{aliases = {"joe","joseph","cat","dog","animal","intestines","lungs","meat","penis","cock","human","male","female","guy","gal","man","woman","person","jimmy","joe","cup of joe","a cup of joe","jerome"},
+	{aliases = {"joe","joseph","cat","dog","animal","intestines","lungs","meat","penis","cock","human","male","female","guy","gal","man","woman","person","jimmy","joe","cup of joe","a cup of joe","jerome","baby","fetus","placenta","men","women","them","him","her"},
 		color=Color3.fromRGB(145,32,50),
 		transparency=0.1,
 		dispensesound="dispense3",
